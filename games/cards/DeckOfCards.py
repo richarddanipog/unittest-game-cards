@@ -7,14 +7,8 @@ ACE_FACES = {"Jack": 11, "Queen": 12, "King": 13, "ACE": 14}
 
 class DeckOfCards:
     def __init__(self):
-        # First - create regular cards [(2,Diamond), (3,Diamond), (4,Diamond), (5,Diamond), (6,Diamond),....]
-        regular_cards = [Card(num, suit) for suit in TYPES_CARD for num in range(2, 11)]
-
-        # second - create regular cards [(Jack,Diamond), (Jack,Spade), (Jack,Heart), (Jack,Club), (Queen,Diamond),....]
-        faces_cards = [Card(v, suit) for k, v in ACE_FACES.items() for suit in TYPES_CARD]
-
         # init the deck with all cards
-        self.deck = regular_cards + faces_cards
+        self.deck = self.__build_deck()
 
     def __shuffle(self):
         # Shuffle the deck
@@ -35,3 +29,12 @@ class DeckOfCards:
         for card in self.deck:
             all_cards += str(card) + "\n"
         print(all_cards)
+
+    def __build_deck(self):
+        # First - create regular cards [(2,Diamond), (3,Diamond), (4,Diamond), (5,Diamond), (6,Diamond),....]
+        regular_cards = [Card(num, suit) for suit in TYPES_CARD for num in range(2, 11)]
+
+        # second - create regular cards [(Jack,Diamond), (Jack,Spade), (Jack,Heart), (Jack,Club), (Queen,Diamond),....]
+        faces_cards = [Card(v, suit) for k, v in ACE_FACES.items() for suit in TYPES_CARD]
+
+        return regular_cards + faces_cards
