@@ -7,7 +7,7 @@ class Card:
         if 1 >= value or value >= 15:
             raise ValueError("Value need to be 2-14")
         elif suit not in TYPES_CARD:
-            raise ValueError("Value suit need to be Diamond,Spade,Heart,Club ")
+            raise ValueError("Value suit need to be Diamond, Spade, Heart, Club ")
         else:
             self.value = value
             self.suit = suit
