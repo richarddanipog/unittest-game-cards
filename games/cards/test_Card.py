@@ -24,5 +24,5 @@ class TestCard(TestCase):
         self.assertEqual(self.card2.value, 14)
 
     def test_repr(self):
-        self.assertEqual(repr(self.card1), "2 of Heart")
-        self.assertEqual(repr(self.card2), "ACE of Club")
+        self.assertEqual(self.card1.__repr__(), "2 of Heart")
+        self.assertEqual(self.card2.__repr__(), "ACE of Club")
