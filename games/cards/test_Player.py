@@ -16,13 +16,18 @@ class TestPlayer(TestCase):
     def tearDown(self):
         pass
 
+    def test_create_player(self):
+        self.assertEqual(self.player1.name, "rich")
+        self.assertEqual(self.player1.amount_money, 5000)
+        self.assertEqual(self.player1.num_cards_on_hands, 5)
+
     def test_set_hand(self):
         self.player1.set_hand(self.cards)
 
         self.assertListEqual(self.player1.player_hand, self.cards)
 
     @mock.patch("builtins.print")
-    def test_set_hand_failed(self,mocked_print):
+    def test_set_hand_failed(self, mocked_print):
         with mock.patch.object(Card, '__init__', return_value=None) as mocked_card_init:
             new_card = Card(10, "Spade")
             mocked_card_init.assert_called_with(10, "Spade")
